@@ -1,0 +1,23 @@
+.panel.panel-danger
+    .panel-heading Send application
+    .panel-body
+        form(action=`/register?lang=${info.lang}`, class="mx-auto", method="POST" onsubmit="return validateEngForm()")
+            div(class="form-group")
+                label(for="eng_email" class="non-bold") Email:
+                input(type="text", id="eng_email", class="form-control",  name="email")
+                div(class="invalid-feedback text-14 mg-l-15") Incorrect email
+            div(class="form-group")
+                label(for="eng_name" class="non-bold") First and last name:
+                input(type="text", id="eng_name", class="form-control",  name="name")
+                div(class="invalid-feedback text-14 mg-l-15") This is required field
+            div(class="form-group")
+                label(for="eng_phone" class="non-bold") Phone:
+                input(type="text", max='10', min='10', id="eng_phone", class="form-control", name="phone")
+                small(class='text-muted') Entry 10 digits
+                div(class="invalid-feedback text-14 mg-l-15") Incorrect phone
+            div(class="form-group")
+                label(for="eng_notes" class="non-bold") Comments:
+                textarea(id="eng_notes", class="form-control", name="notes", rows=3)
+
+            input(type="submit" class="btn btn-info bg-blue btn-lg btn-block" value="Post")
+

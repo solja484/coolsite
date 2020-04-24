@@ -1,0 +1,56 @@
+include ../PUG-Bootstrap/_bootstrap
+html
+    include head
+    body
+        .row(class="mg-10")
+            .col-md-12(class="text-center mg-10")
+                h1 Applications
+            each a in data
+                .col-md-4
+                    if a['confirmed']
+                        .panel.panel-success
+                            .panel-heading(class="text-center")
+                                p=a['name']
+                            .panel-body
+                                .row
+                                    .col-md-3
+                                        p id
+                                    .col-md-9
+                                        p= a['_id']
+                                    .col-md-3
+                                        p email
+                                    .col-md-9
+                                        p= a['email']
+                                    .col-md-3
+                                        p phone
+                                    .col-md-9
+                                        p= a['phone']
+                                    .col-md-3
+                                        p notes
+                                    .col-md-9
+                                        p(class="text-break")= a['notes']
+                    else
+                        .panel.panel-danger
+                            .panel-heading(class="text-center")
+                                p=a['name']
+                            .panel-body
+                                .row
+                                    .col-md-3
+                                        p id
+                                    .col-md-9
+                                        p= a['_id']
+                                    .col-md-3
+                                        p email
+                                    .col-md-9
+                                        p= a['email']
+                                    .col-md-3
+                                        p phone
+                                    .col-md-9
+                                        p= a['phone']
+                                    .col-md-3
+                                        p notes
+                                    .col-md-9
+                                        p(class="text-break")= a['notes']
+
+
+        include scripts

@@ -1,0 +1,76 @@
+if info.lang === 'ukr'
+    h1 КНИГИ
+else
+    h1 BOOKS
+
+div(id="books-container")
+    booklist(:books="books" :lang="lang" :local="local")
+script(src="https://unpkg.com/vue")
+script.
+    let books = !{JSON.stringify(books)};
+    let lang = !{JSON.stringify(info.lang)};
+    let bk = !{JSON.stringify(bk)};
+    let local=bk[lang];
+    console.log(local);
+
+    Vue.component('book', {
+        props: ["book","lang","local"],
+        data: function () {
+            return {
+                more_opened: false
+            }
+        },
+        methods: {
+            open: function (event) {
+                this.more_opened = true;
+            },
+            getAnnot: function(lang,book){
+              return lang==='eng'?book.eng:book.body;
+            },
+            close: function (event) {
+                this.more_opened = false;
+            }
+        },
+
+        template: `<div class="card card-body mg-10">
+                                        <div class="row text-left">
+                                        <span class="col-md-2 bold">{{local.author}}</span>
+                                        <div class="col-md-10">{{book.author}}</div>
+                                        </div>
+                                        <div class="row text-left">
+                                            <div class="col-md-2 bold">{{local.title}}</div>
+                                            <div class="col-md-10">{{book.title}}</div>
+                                        </div>
+                                        <template v-if="!more_opened">
+                                        <div class="text-left">
+                                              <a class="lang-link nav-link" v-on:click="open">{{local.more}}</a>
+                                        </div>
+                                        </template>
+                                        <template v-else>
+                                            <div class="text-left">
+                                                  <a class="lang-link nav-link"  v-on:click="close">{{local.less}}</a>
+                                            </div>
+                                            <div class="row text-left">
+                                                <div class="col-md-10">{{getAnnot(lang,book)}}</div>
+                                            </div>
+                                        </template>
+                                    </div>`
+    });
+
+    Vue.component('booklist', {
+        props: ["books","lang","local"],
+        template: `<div> <book v-for="book in books" :key="book.name" :book="book" :lang="lang" :local="local"/>
+                               </div>`
+    });
+
+    new Vue({
+        el: "#books-container",
+        data: {
+            books: books,
+            lang:lang,
+            local:local
+        }
+    });
+
+
+

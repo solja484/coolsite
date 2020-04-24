@@ -1,0 +1,37 @@
+nav(class="navbar navbar-expand-lg navbar-dark sharp-corners" style=`background-color: ${info.config.color}`)
+    a(class="nav-link brand" href=`/?lang=${info.lang}`)=info.config.domain
+    strong |
+    button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main")
+        span(class="icon-bar")
+    div(class="collapse navbar-collapse" id="navbar-main")
+        ul(class="navbar-nav expand mr-auto" id="menu")
+            li(class = "nav-item ")
+                        a(class=`h4 mx-2 header-link ${info.url_path==="/"?"":"text-white-50"} link` id ="menu_main"  href=menu[0].href + `?lang=${info.lang}`)
+                            if info.lang === 'ukr'
+                                strong= menu[0].title.ukr
+                            else
+                                strong= menu[0].title.eng
+            li(class="nav-item ")
+                a(class=`h4 mx-2 header-link ${info.url_path==="/books"?"":"text-white-50"} link` id ="menu_books"  href=menu[1].href + `?lang=${info.lang}`)
+                    if info.lang === 'ukr'
+                        strong= menu[1].title.ukr
+                    else
+                        strong= menu[1].title.eng
+            li(class="nav-item ")
+                a( class=`h4 mx-2 header-link ${info.url_path==="/about"?"":"text-white-50"} link` id ="menu_about"  href=menu[2].href + `?lang=${info.lang}`)
+                    if info.lang === 'ukr'
+                        strong= menu[2].title.ukr
+                    else
+                        strong= menu[2].title.eng
+
+
+        .div(align="right")
+            strong
+                if info.lang === 'ukr'
+                    a(href=`${info.url_path}?lang=ukr` class='selected lang_link') UKR
+                    strong |
+                    a(href=`${info.url_path}?lang=eng` class='lang_link disabled') ENG
+                else
+                    a(href=`${info.url_path}?lang=ukr` class='lang_link disabled') UKR
+                    strong |
+                    a(href=`${info.url_path}?lang=eng` class=' lang_link selected') ENG

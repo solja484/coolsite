@@ -1,0 +1,25 @@
+.panel.panel-danger
+    .panel-heading Подати заявку
+    .panel-body
+        form(action=`/register?lang=${info.lang}`, class="mx-auto", method="POST" onsubmit="return validateUkrForm()")
+            div(class="form-group")
+                label(for="ukr_email" class="non-bold") Електронна пошта:
+                input(type="text", id="ukr_email", class="form-control",  name="email")
+                div(class="invalid-feedback text-14 mg-l-15") Введена пошта є некоректною
+            div(class="form-group")
+                label(for="ukr_name" class="non-bold") Ім'я та прізвище користувача:
+                input(type="text", id="ukr_name", class="form-control",  name="name")
+                div(class="invalid-feedback text-14 mg-l-15") Це поле не повинно бути пустим
+            div(class="form-group")
+                label(for="ukr_phone" class="non-bold") Телефон:
+                input(type="text", max=10, min=10, id="ukr_phone", class="form-control", name="phone")
+                small(class='text-muted') Введіть 10 цифр
+                div(class="invalid-feedback text-14 mg-l-15") Некоректний формат номеру
+            div(class="form-group")
+                label(for="ukr_notes" class="non-bold") Додайте коментар:
+                textarea(id="ukr_notes", class="form-control", name="notes", rows=3)
+
+            input(type="submit" class="btn btn-info bg-blue btn-lg btn-block" value="Відправити")
+
+
+

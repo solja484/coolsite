@@ -1,0 +1,8 @@
+if info.url_path === "/"
+    div(class="img-container")
+        img(src=`${info.config.img}` class="img-fluid img-rounded img")
+br
+if info.lang === "ukr"
+        h1 #{content.ukr}
+else
+        h1 #{content.eng}

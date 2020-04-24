@@ -1,0 +1,23 @@
+include ../PUG-Bootstrap/_bootstrap
+html
+    include head.pug
+    body
+        include menu.pug
+        div(class="container-fluid")
+            br
+            br
+            .row
+                .col-md-8(class='text-center')
+                    if info.url_path === "/books"
+                        include books.pug
+                    else
+                        include content.pug
+                    br
+                    br
+                .col-md-4
+                    if info.lang === 'ukr'
+                        include form_ukr
+                    else
+                        include form_eng
+
+include scripts.pug
